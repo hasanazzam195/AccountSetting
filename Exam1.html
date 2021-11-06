@@ -1,0 +1,214 @@
+<html>
+    <head>
+        <title>Account Setting</title>
+        <link href="style.css" type="text/css" rel="stylesheet"/>
+
+        <script type="text/javascript">
+                function JopList(){
+                    debugger;
+                    document.getElementById("JobList").style.display="block";
+                    document.getElementById("NewJob").style.display="none";
+                }
+                function newJop(){
+                    document.getElementById("JobList").style.display="none";
+                    document.getElementById("NewJob").style.display="block";
+                }
+
+                function bultDiv(){
+                    debugger;
+                    var title=document.getElementById("txtJobTitle").value;
+                    var JopTyp=document.getElementById("JobType").value;  
+                    var Location=document.getElementById("ddlJobLocation").value; 
+
+                    var JopTitle =document.createTextNode(title);
+                    var JopType=document.createTextNode(JopTyp);
+                    var loc=document.createTextNode(Location);
+
+                    var div1=document.createElement("div");
+                    div1.setAttribute("class","ContentRow");
+
+                    var div2=document.createElement("div");
+                    div2.setAttribute("class","Row");
+                    div1.appendChild(div2);
+
+                    var div3=document.createElement("div");
+                    div3.setAttribute("class","TasksBox");
+                    div2.appendChild(div3);
+
+                    spTitle=document.createElement("span");
+                    spTitle.setAttribute("class","JobElementTitle");
+                    spTitle.appendChild(JopTitle);
+                    div3.appendChild(spTitle)
+
+                    spType=document.createElement("span");
+                    spType.innerText="Full Time";
+                    spType.setAttribute("class","JobElementType");
+                    div3.appendChild(spType);
+
+                    spLoc=document.createElement("span");
+                    spLoc.setAttribute("class","JobElementLocation");
+                    spLoc.appendChild(loc);
+                    div3.appendChild(spLoc);
+
+                    var design=document.getElementById("DesignJobs");
+                    var development=document.getElementById("DevelopmentJobs");
+
+                    if(JopTyp=="Design"){
+                        design.appendChild(div1);
+                    }
+                    else if (JopTyp=="Development"){
+                        development.appendChild(div1);
+                    }
+                }
+
+                function Cancel() {
+                    debugger;
+                    document.getElementById("JobList").style.display="none";
+                    document.getElementById("NewJob").style.display="block";
+
+                    var title=document.getElementById("txtJobTitle").value='';
+                }
+
+                function loc(){
+                   var x=document.getElementsByClassName("JobElementLocation").innerText;
+                   if(x[0]=="USA"){
+                       
+                   }
+
+                }
+        
+        </script>
+    
+    </head>
+    <body>
+<div class="ContentBox">
+<div class="Menu">
+<div class="MenuItems" >
+    <span class="MenuText" onclick="newJop()" >New Job</span>
+</div>
+<div class="MenuItems" >
+    <span class="MenuText" onclick="JopList()" >Job List</span>
+</div>
+</div>
+<div class="Content" >
+
+    <div id="NewJob" class="ContentDev">
+
+
+    <div class="ContentRow">
+    <span>
+        Job Title
+    </span>
+    <div class="Row">
+        <input type="text" id="txtJobTitle" />
+    </div>
+</div>
+<div class="ContentRow">
+    <span>
+        Type of Job
+    </span>
+    <div class="Row">
+        <select class="FormCountrol" id="JobType">
+            <option>Design</option>
+            <option>Development</option>
+        </select>
+    </div>
+</div>
+<div class="ContentRow">
+    <span>
+        Location
+    </span>
+    <div class="Row">
+        <select class="FormCountrol" id="ddlJobLocation" onchange="loc()" >
+            <option>USA</option>
+            <option>Jordan</option>
+        </select>
+    </div>
+</div>
+<div class="actionBar">
+    <div class="SaveChangesBox">
+        <button class="btn ButtonSubmit" onclick="bultDiv()" >Save Changes</button>
+    </div>
+    <div class="CancelBox">
+        <button class="btn btn-default" onclick="Cancel()" >Cancel</button>
+    </div>
+</div>
+</div>
+
+
+
+<div id="JobList" class="ContentDev" style="display: none;">
+
+
+    <div class="ContentRow">
+        <span>
+            Location
+        </span>
+        <div class="Row">
+            <select class="FormCountrol" id="JobLocation" style="width: 30%;" >
+                <option value="1">ALL</option>
+                <option value="2">USA</option>
+                <option value="3">Jordan</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="SubTitleBlock">
+        <span class="SubTitleText">Design</span>
+    </div>
+    <div id="DesignJobs">
+    <div class="ContentRow">
+        <div class="Row">
+            <div class="TasksBox">
+                <span class="JobElementTitle">Senior Graphic Designer</span>
+                <span class="JobElementType">Full Time</span>
+                <span class="JobElementLocation">USA</span>
+            </div>
+        </div>
+    </div>
+    <div class="ContentRow">
+        <div class="Row">
+            <div class="TasksBox">
+                <span class="JobElementTitle">Senior Graphic Designer</span>
+                <span class="JobElementType">Full Time</span>
+                <span class="JobElementLocation">Jordan</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="SubTitleBlock">
+    <span class="SubTitleText">Development</span>
+</div>
+<div id="DevelopmentJobs">
+<div class="ContentRow">
+    <div class="Row">
+        <div class="TasksBox">
+            <span class="JobElementTitle">.NET Developer</span>
+            <span class="JobElementType">Full Time</span>
+            <span class="JobElementLocation">Jordan</span>
+        </div>
+    </div>
+</div>
+<div class="ContentRow">
+    <div class="Row">
+        <div class="TasksBox">
+            <span class="JobElementTitle">.NET Developer</span>
+            <span class="JobElementType">Full Time</span>
+            <span class="JobElementLocation">USA</span>
+        </div>
+    </div>
+</div>
+</div>
+
+    
+</div>
+
+  
+  
+</div>
+</div>
+
+
+    </body>
+</html>
